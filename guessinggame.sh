@@ -11,6 +11,11 @@ green='\033[0;32m'
 blue='\033[0;34m'
 nc='\033[0m'	# No Color
 
+# Shows `escaped` message
+function ShowMsg {
+	echo -e "$*"
+}
+
 # Counts regular files in the current directory
 fnum=$(ls -F | grep -vc /)
 
@@ -21,16 +26,16 @@ do
 	read -p "Your guess is: " answer
 
 	if [[ ! $answer =~ ^[0-9]*$ ]]; then
-		echo "Isn't a number! Try again."
+		ShowMsg "Isn't a number! Try again."
 		continue
 	fi
 
 	if [[ $answer -gt $fnum ]]; then
-		echo -e "The number is too ${red}high${nc}."
+		ShowMsg "The number is too ${red}high${nc}."
 	elif [[ $answer -lt $fnum ]]; then
-		echo -e "The number is too ${red}low${nc}."
+		ShowMsg "The number is too ${red}low${nc}."
 	else
-		echo -e "Congratulations! You are ${green}right!${nc}"
+		ShowMsg "Congratulations! You are ${green}right!${nc}"
 		exit 0
 	fi
 done
