@@ -1,7 +1,7 @@
 project_file=guessinggame.sh
 
 all:
-	echo "#The GuessingGame project" > README.md
+	echo "# The GuessingGame project" > README.md
 	echo >> README.md
 	echo -n "Last updated by *" >> README.md
 	LC_TIME=C date | tr '\n' '*' >> README.md
