@@ -1,9 +1,20 @@
 #!/usr/bin/env bash
 
+# How to change the output color of echo in Linux:
+# https://stackoverflow.com/questions/5947742/how-to-change-the-output-color-of-echo-in-linux#5947802
+
+# `echo -e` is used to apply Escape-codes
+
+# Defines escape codes of colours
+red='\033[0;31m'
+green='\033[0;32m'
+blue='\033[0;34m'
+nc='\033[0m'	# No Color
+
 # Counts regular files in the current directory
 fnum=$(ls -F | grep -vc /)
 
-echo "Please, guess how many files are in the current directory $PWD"
+echo -e "Please, guess how many files are in the current directory ${blue}$PWD${nc}"
 
 while true
 do
@@ -15,11 +26,11 @@ do
 	fi
 
 	if [[ $answer -gt $fnum ]]; then
-		echo "The number is too high."
+		echo -e "The number is too ${red}high${nc}."
 	elif [[ $answer -lt $fnum ]]; then
-		echo "The number is too low."
+		echo -e "The number is too ${red}low${nc}."
 	else
-		echo "Congratulations! You are right!"
+		echo -e "Congratulations! You are ${green}right!${nc}"
 		exit 0
 	fi
 done
