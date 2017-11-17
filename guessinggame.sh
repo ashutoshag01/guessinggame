@@ -25,7 +25,7 @@ while true
 do
 	read -p "Your guess is: " answer
 
-	if [[ ! $answer =~ ^[0-9]*$ ]]; then
+	if [[ ! $answer =~ ^[0-9]+$ ]]; then
 		ShowMsg "Isn't a number! Try again."
 		continue
 	fi
